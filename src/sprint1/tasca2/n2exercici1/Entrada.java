@@ -122,7 +122,6 @@ public class Entrada {
                     bool = true;
                     error = false;
                 } else if(input.charAt(0) == 'n' || input.charAt(0) == 'N'){
-                    bool = false;
                     error = false;
                 } else {
                     throw new Exception();

@@ -1,7 +1,5 @@
 package sprint1.tasca2.n1exercici1;
 
-import java.util.ArrayList;
-
 class Shop {
 
     public static void main (String[] args) {
