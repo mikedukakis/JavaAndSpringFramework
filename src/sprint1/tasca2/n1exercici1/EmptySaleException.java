@@ -5,4 +5,5 @@ public class EmptySaleException extends Exception{
     public EmptySaleException(String msg) {
         super(msg);
     }
+
 }
