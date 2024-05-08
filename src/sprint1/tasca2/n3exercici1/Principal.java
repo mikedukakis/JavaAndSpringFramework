@@ -11,14 +11,14 @@ public class Principal {
 //        Scanner entradaTeclat = new Scanner(System.in);
 
         rows = readInt("How many rows are there?");
-        seat = readInt("How many seats per row?")
-        Cine cine = new Cine()
+        seat = readInt("How many seats per row?");
+//        Cine cine = new Cine();
         iniciar();
 
     }
 
     public static byte menu() {
-        Scanner keyboardInput = new Scanner(System.in);
+//        Scanner keyboardInput = new Scanner(System.in);
         byte option = 0;
         String menu =
             "1.- Mostrar totes les butaques reservades.\n" +
@@ -28,7 +28,7 @@ public class Principal {
             "5.- Anul·lar totes les reserves d’una persona.\n" +
             "0.- Sortir.\n";
         do {
-            option = Entrada.readByte(menu);
+            option = readByte(menu);
             if(option < 0 || option > 5){
                 System.out.println("Please enter an integer from 0 to 5");
             }
