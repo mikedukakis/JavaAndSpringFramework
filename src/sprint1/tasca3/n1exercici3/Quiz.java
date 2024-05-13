@@ -1,6 +1,5 @@
 package sprint1.tasca3.n1exercici3;
 
-import java.io.File;
 import java.util.*;
 
 public class Quiz {
@@ -16,8 +15,6 @@ public class Quiz {
         score = guessCapital(FileHandling.countryCapital, getRandomCountries(FileHandling.countryCapital));
         FileHandling.createFile(FileHandling.classificacioFile.toString());
         FileHandling.writeToFile(name, score);
-
-//        System.out.println(FileHandling.createFile(FileHandling.countriesFile.toString()));
     }
 
     public static String getName() {
