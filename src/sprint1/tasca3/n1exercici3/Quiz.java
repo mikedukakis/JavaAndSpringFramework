@@ -1,6 +1,5 @@
 package sprint1.tasca3.n1exercici3;
 
-import java.io.File;
 import java.util.*;
 
 public class Quiz {
