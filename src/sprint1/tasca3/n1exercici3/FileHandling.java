@@ -6,10 +6,20 @@ import java.util.Scanner;
 
 public class FileHandling {
 
-    static File countriesFile =
-            new File("C:\\Users\\smcri\\Desktop\\CODE\\JavaAndSpringFramework\\src\\sprint1\\tasca3\\n1exercici3\\countries.txt");
-    static String outPathName = "C:\\Users\\smcri\\Desktop\\CODE\\JavaAndSpringFramework\\src\\sprint1\\tasca3\\n1exercici3\\classificacio.txt";
+    static String countriesPathNames[] = {"src", "sprint1", "tasca3", "n1exercici3", "countries.txt"};
+    static File countriesFile = new File(createFilePath(countriesPathNames));
+    static String classificacioPathNames[] = {"src", "sprint1", "tasca3", "n1exercici3", "classificacio.txt"};
+    static File classificacioFile = new File(createFilePath(classificacioPathNames));
     static HashMap<String, String> countryCapital = hashMapFromFile(countriesFile);
+
+    public static String createFilePath(String[] pathNames) {
+        String pathSeparator = File.separator;
+        String currentDir = System.getProperty("user.dir");
+        String pathName = currentDir + "\\";
+        pathName += pathName.join(pathSeparator, pathNames);
+
+        return pathName;
+    }
 
     public static HashMap<String, String> hashMapFromFile(File file) {
         String[] entry;
@@ -30,11 +40,13 @@ public class FileHandling {
         return hashMap;
     }
 
-    public static void createFile(String pathName) {
+    public static boolean createFile(String pathName) {
+        boolean bool = false;
         try {
             File classificacio = new File(pathName);
             if (classificacio.createNewFile()) {
                 System.out.println("File created: " + classificacio.getName());
+                bool = true;
             } else {
                 System.out.println("File already exists.");
             }
@@ -42,10 +54,11 @@ public class FileHandling {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        return bool;
     }
 
     public static void writeToFile(String name, int score) {
-        try (FileWriter fileWriter = new FileWriter(outPathName, true);
+        try (FileWriter fileWriter = new FileWriter(classificacioFile, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write("Name: " + name + ". Score: " + score + "\n");
             System.out.println("Successfully wrote to file.");
