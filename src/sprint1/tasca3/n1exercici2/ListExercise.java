@@ -8,23 +8,33 @@ import java.util.ListIterator;
 public class ListExercise {
 
     public static void main(String[] args) {
-        List<Integer> firstList = new ArrayList<>();
-        for(int i = 1; i < 11; i++) {
-            firstList.add(i);
-        }
+        List<Integer> firstList = createIntList(1, 10);
+
         System.out.println("First List of Integers: " + firstList);
 
-        List<Integer> secondList = new ArrayList<>();
+        List<Integer> secondList = reverseIntList(firstList);
 
-        ListIterator<Integer> iter = firstList.listIterator();
+        System.out.println("Second List of Integers (first List reversed): " + secondList);
+
+    }
+
+    public static List<Integer> createIntList(int lowestValue, int highestValue) {
+        List<Integer> listOfIntegers = new ArrayList<>();
+        for(int i = lowestValue; i < highestValue; i++) {
+            listOfIntegers.add(i);
+        }
+        return listOfIntegers;
+    }
+
+    public static List<Integer> reverseIntList(List<Integer> integerList) {
+        List<Integer> reversedList = new ArrayList<>();
+        ListIterator<Integer> iter = integerList.listIterator();
         while(iter.hasNext()){
             iter.next();
         }
         while(iter.hasPrevious()){
-            secondList.add(iter.previous());
+            reversedList.add(iter.previous());
         }
-
-        System.out.println("Second List of Integers (first List reversed): " + secondList);
-
+        return reversedList;
     }
 }
