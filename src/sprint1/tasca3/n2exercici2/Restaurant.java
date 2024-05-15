@@ -2,7 +2,7 @@ package sprint1.tasca3.n2exercici2;
 
 import java.util.Objects;
 
-public class Restaurant {
+public class Restaurant implements Comparable<Restaurant> {
     // Attributes
     private String name;
     private int score;
@@ -29,6 +29,7 @@ public class Restaurant {
         this.score = score;
     }
 
+    // Own Methods
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,6 +40,15 @@ public class Restaurant {
     @Override
     public int hashCode() {
         return Objects.hash(name, score);
+    }
+
+    @Override
+    public int compareTo(Restaurant other) {
+        int comparison = this.name.compareTo(other.name);
+        if (comparison == 0) {
+            comparison = Integer.compare(this.score, other.score);
+        }
+        return comparison;
     }
 
     @Override
