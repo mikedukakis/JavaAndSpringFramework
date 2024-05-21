@@ -6,15 +6,17 @@ public class Main {
     public static void main(String[] args) {
         Directory dir = new Directory("..");
         File[] fileArray = dir.listContentsOfDir(dir.getDirPathName());
-        loopThroughContent(fileArray, dir);
+        loopThroughContent(fileArray);
     }
 
-    public static void loopThroughContent(File[] fileArray, Directory dir) {
+    public static void loopThroughContent(File[] fileArray) {
         for(File element : fileArray){
-            System.out.println(element);
             if(element.isDirectory()){
+                System.out.println(element + "(D)");
                 File[] subArray = element.listFiles();
-                loopThroughContent(subArray, dir);
+                loopThroughContent(subArray);
+            } else {
+                System.out.println(element + "(F)");
             }
         }
     }
