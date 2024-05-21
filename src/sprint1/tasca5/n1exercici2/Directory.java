@@ -4,11 +4,9 @@ import java.io.File;
 
 public class Directory {
     private String dirPathName;
-    //private File directory;
 
     public Directory(String dirPathName) {
         this.dirPathName = dirPathName;
-        //this.directory = new File(dirPathName);
     }
 
     public String getDirPathName() {
