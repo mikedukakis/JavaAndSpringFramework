@@ -29,7 +29,8 @@ public class DniParamTest {
                 Arguments.of('R', 36109518),
                 Arguments.of('G', 80618385),
                 Arguments.of('C', 26346658),
-                Arguments.of('L', 13526802)
+                Arguments.of('L', 13526802),
+                Arguments.of('K', 88377682)
         );
     }
 }
