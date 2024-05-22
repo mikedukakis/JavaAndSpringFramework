@@ -7,16 +7,6 @@ public class Quiz {
     static Scanner keyboardInput = new Scanner(System.in);
     private static final int NUMBER_OF_QUESTIONS = 10;
 
-    public static void main(String[] args) {
-        String name;
-        int score;
-
-        name = getName();
-        score = guessCapital(FileHandling.countryCapital, getRandomCountries(FileHandling.countryCapital));
-        FileHandling.createFile(FileHandling.classificacioFile.toString());
-        FileHandling.writeToFile(name, score);
-    }
-
     public static String getName() {
         String name;
         boolean correct = false;
@@ -48,7 +38,6 @@ public class Quiz {
 
         return array;
     }
-
 
     public static int guessCapital(HashMap<String, String> hashMap, String[] array) {
         String shownCountry;
