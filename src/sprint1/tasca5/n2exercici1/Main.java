@@ -1,12 +1,9 @@
 package sprint1.tasca5.n2exercici1;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class Main {
-
     public static void main(String[] args) {
         Properties properties = new Properties();
         String currentDir = System.getProperty("user.dir");
@@ -22,7 +19,8 @@ public class Main {
 
         Directory dir = new Directory(dirPathName);
         File[] fileArray = dir.listContentsOfDir(dir.getDirPathName());
-        FileHandler.loopThroughContent(fileArray, outputFilePath);
+        FileHandler.createTree(FileHandler.retrieveFileNames(fileArray), outputFilePath);
     }
+
 
 }
