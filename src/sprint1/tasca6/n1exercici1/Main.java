@@ -6,8 +6,8 @@ public class Main {
         NoGenericMethods noGen1 = new NoGenericMethods(1,2,3);
         NoGenericMethods noGen2 = new NoGenericMethods(3,2,1);
 
-        System.out.println(noGen1.toString());
-        System.out.println(noGen2.toString());
+        System.out.println(noGen1);
+        System.out.println(noGen2);
     }
 
 }
