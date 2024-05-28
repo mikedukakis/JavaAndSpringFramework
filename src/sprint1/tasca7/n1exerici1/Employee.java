@@ -1,6 +1,6 @@
 package sprint1.tasca7.n1exerici1;
 
-public abstract class Employee {
+public class Employee {
     private String firstName;
     private String lastName;
     private float hourlyRate;
@@ -36,6 +36,7 @@ public abstract class Employee {
     }
 
     public float calculateWages(int hours){
+        System.out.print("The wages for " + this.getFirstName() + " " + this.getLastName() + " (superclass) are: ");
         return hours * this.hourlyRate;
     }
 
