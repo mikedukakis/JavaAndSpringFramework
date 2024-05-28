@@ -4,23 +4,47 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class FileHandler {
 
-    public static void loopThroughContent(File[] fileArray, String outputFilePath) {
-        for (File element : fileArray) {
-            if (element.isDirectory()) {
-                writeToFile(element + "(D)", outputFilePath);
-                File[] subArray = element.listFiles();
-                loopThroughContent(subArray, outputFilePath);
+    static ArrayList<String> fileList = new ArrayList<>();
+
+    public static ArrayList<String> retrieveFileNames(File[] fileArray) {
+        String line;
+        for(int i = 0; i < fileArray.length; i++) {
+            Date date = new Date(fileArray[i].lastModified());
+            if(fileArray[i].isDirectory()){
+                line = fileArray[i] + " [D]" + " - " + date;
+                fileList.add(line);
+                File[] subArray = fileArray[i].listFiles();
+                retrieveFileNames(subArray);
             } else {
-                writeToFile(element + "(F)", outputFilePath);
+                line = fileArray[i] + " [F]" + " - " + date;
+                fileList.add(line);
             }
+        }
+        return fileList;
+    }
+
+    public static String[] stringArrayFromPath(String path){
+        return path.split("\\\\");
+    }
+
+    public static void createTree(ArrayList<String> arrayList, String str) {
+        String branch;
+        String tab = "---";
+        for(String element : arrayList){
+            String[] pathArray = stringArrayFromPath(element);
+            int arrayLength = pathArray.length;
+            branch = tab.repeat(arrayLength - 1) + pathArray[arrayLength - 1];
+            writeToFile(branch, new File(str));
         }
     }
 
-    public static void writeToFile(String str, String outputFilePath) {
-        try (FileWriter fileWriter = new FileWriter(outputFilePath, true);
+    public static void writeToFile(String str, File file) {
+        try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write(str + "\n");
         } catch (IOException e) {
@@ -28,5 +52,4 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
-
 }
