@@ -6,10 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Directory dir = new Directory("..");
         File[] fileArray = dir.listContentsOfDir(dir.getDirPathName());
-
-        FileHandler.loopThroughContent(fileArray);
+        FileHandler.createTree(FileHandler.retrieveFileNames(fileArray));
 
         File txtFile = new File(System.getProperty("user.dir").concat(File.separator).concat("directoryList.txt"));
-        FileHandler.readTxt(txtFile);
+        FileHandler.readTxtFile(txtFile);
     }
 }

@@ -1,37 +1,44 @@
 package sprint1.tasca5.n1exercici2;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FileHandler {
 
-    public static void loopThroughContent(File[] fileArray) {
-        int i = 0;
-        for(File element : fileArray){
-            Date d = new Date(element.lastModified());
-            String[] pathArray = arrayFromPath(element);
-            loopThroughArray(pathArray);
-            if(element.isDirectory()){
-                System.out.println(element + "(D) " + d);
-                File[] subArray = element.listFiles();
-                loopThroughContent(subArray);
+    static ArrayList<String> fileList = new ArrayList<>();
+
+    public static ArrayList<String> retrieveFileNames(File[] fileArray) {
+        String line;
+        for(int i = 0; i < fileArray.length; i++) {
+            Date date = new Date(fileArray[i].lastModified());
+            if(fileArray[i].isDirectory()){
+                line = fileArray[i] + " [D]" + " - " + date;
+                fileList.add(line);
+                File[] subarray = fileArray[i].listFiles();
+                retrieveFileNames(subarray);
             } else {
-                System.out.println(element + "(F)" + d);
+                line = fileArray[i] + " [F]" + " - " + date;
+                fileList.add(line);
             }
-            i++;
         }
+        return fileList;
     }
 
-    public static String[] arrayFromPath(File file) {
-        String filePath = file.getAbsolutePath();
-        System.out.println(filePath);
-        String[] arrayPath = filePath.split("\\\\");
-        return arrayPath;
+    public static String[] stringArrayFromPath(String path){
+        return path.split("\\\\");
     }
 
-    public static void loopThroughArray(String[] array) {
-        for(String element : array){
-            System.out.println(element);
+    public static ArrayList<String> createTree(ArrayList<String> arrayList) {
+        ArrayList<String> fileListClean = new ArrayList<>();
+        String branch;
+        String tab = "   ";
+        for(String element : arrayList){
+            String[] pathArray = stringArrayFromPath(element);
+            int arrayLength = pathArray.length;
+            branch = tab.repeat(arrayLength - 1) + pathArray[arrayLength - 1];
+            fileListClean.add(branch);
         }
+        return fileListClean;
     }
 }

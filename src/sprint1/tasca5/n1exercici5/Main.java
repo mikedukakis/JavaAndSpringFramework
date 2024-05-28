@@ -1,6 +1,6 @@
 package sprint1.tasca5.n1exercici5;
 
-import java.io.File;
+import java.io.*;
 
 public class Main {
 
@@ -13,5 +13,4 @@ public class Main {
 
         FileHandler.deSerialize(file);
     }
-
 }
