@@ -9,7 +9,7 @@ public class Main {
         char character = 'G';
         int number = 101;
 
-        GenericMethods.printGenerics(pers1, str);
+        GenericMethods.printGenerics(number, pers1);
         GenericMethods.printGenerics(pers1, str, character, number);
 
     }
