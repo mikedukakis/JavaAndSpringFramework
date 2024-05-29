@@ -9,7 +9,7 @@ public class Main {
         List<Object> mixedList = Arrays.asList(22, "helicopter", 15, "car", "airplane",
                 12, "motorbike", 55, "van", 3, "lorry", 101);
 
-        System.out.println("Strings from shorter to longer: " + MixedList.filterStrings(mixedList));
+        System.out.println("Strings from longer to shorter: " + MixedList.filterStrings(mixedList));
     }
 
 }

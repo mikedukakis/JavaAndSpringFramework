@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Months.months.forEach( (month) -> System.out.println(month));
+        Months.months.forEach( month -> System.out.println(month));
 
     }
 
