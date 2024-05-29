@@ -7,38 +7,33 @@ import java.util.Date;
 public class FileHandler {
 
     static ArrayList<String> fileList = new ArrayList<>();
+    static int layer = 0;
 
     public static ArrayList<String> retrieveFileNames(File[] fileArray) {
         String line;
+        String tab = "    ";
+
         for(int i = 0; i < fileArray.length; i++) {
             Date date = new Date(fileArray[i].lastModified());
             if(fileArray[i].isDirectory()){
-                line = fileArray[i] + " [D]" + " - " + date;
+                line = tab.repeat(layer) + "[D] " + fileArray[i].getName() + " - " + date;
                 fileList.add(line);
+                layer++;
                 File[] subarray = fileArray[i].listFiles();
                 retrieveFileNames(subarray);
+                layer--;
             } else {
-                line = fileArray[i] + " [F]" + " - " + date;
+                line = tab.repeat(layer) + "[F] " + fileArray[i].getName() + " - " + date;
                 fileList.add(line);
             }
         }
         return fileList;
     }
 
-    public static String[] stringArrayFromPath(String path){
-        return path.split("\\\\");
+    public static void loopThroughArrayList(ArrayList<String> arrayList) {
+        for(int i = 0; i < arrayList.size(); i++) {
+            System.out.println(arrayList.get(i));
+        }
     }
 
-    public static ArrayList<String> createTree(ArrayList<String> arrayList) {
-        ArrayList<String> fileListClean = new ArrayList<>();
-        String branch;
-        String tab = "   ";
-        for(String element : arrayList){
-            String[] pathArray = stringArrayFromPath(element);
-            int arrayLength = pathArray.length;
-            branch = tab.repeat(arrayLength - 1) + pathArray[arrayLength - 1];
-            fileListClean.add(branch);
-        }
-        return fileListClean;
-    }
 }
