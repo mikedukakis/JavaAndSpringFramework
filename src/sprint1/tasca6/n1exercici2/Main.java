@@ -8,7 +8,11 @@ public class Main {
         String str = "Generics!";
         char character = 'G';
 
+        System.out.println("1st test");
         GenericMethods.printGenerics(pers1, str, character);
+        System.out.println("---");
+        System.out.println("2nd test");
+        GenericMethods.printGenerics(str, character, pers1);
 
     }
 
