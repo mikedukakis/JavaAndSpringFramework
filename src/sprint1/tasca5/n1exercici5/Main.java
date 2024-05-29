@@ -1,6 +1,7 @@
 package sprint1.tasca5.n1exercici5;
 
 import java.io.*;
+import static sprint1.tasca5.n1exercici5.FileHandler.*;
 
 public class Main {
 
@@ -9,8 +10,8 @@ public class Main {
         Student student = new Student("Jane Doe", (byte)25, "Java I");
         File file = new File("student.ser");
 
-        FileHandler.serialize(file, student);
+        serialize(file, student);
 
-        FileHandler.deSerialize(file);
+        deSerialize(file);
     }
 }

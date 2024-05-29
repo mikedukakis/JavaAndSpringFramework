@@ -2,6 +2,7 @@ package sprint1.tasca5.n2exercici1;
 
 import java.io.*;
 import java.util.Properties;
+import static sprint1.tasca5.n2exercici1.FileHandler.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,10 +17,11 @@ public class Main {
 
         String dirPathName = properties.getProperty("dirPathName");
         String outputFilePath = properties.getProperty("outputFilePath");
-
         Directory dir = new Directory(dirPathName);
         File[] fileArray = dir.listContentsOfDir(dir.getDirPathName());
-        FileHandler.createTree(FileHandler.retrieveFileNames(fileArray), outputFilePath);
+        File txtFile = new File(System.getProperty("user.dir").concat(File.separator).concat(outputFilePath));
+
+        writeToFile(retrieveFileNames(fileArray), txtFile);
     }
 
 

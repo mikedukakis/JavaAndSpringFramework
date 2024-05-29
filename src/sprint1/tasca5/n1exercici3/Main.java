@@ -1,13 +1,15 @@
 package sprint1.tasca5.n1exercici3;
 
 import java.io.File;
-import java.util.ArrayList;
+import static sprint1.tasca5.n1exercici3.FileHandler.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Directory dir = new Directory("..");
         File[] fileArray = dir.listContentsOfDir(dir.getDirPathName());
-        FileHandler.createTree(FileHandler.retrieveFileNames(fileArray));
+
+        File txtFile = new File(System.getProperty("user.dir").concat(File.separator).concat("directoryList.txt"));
+        writeToFile(retrieveFileNames(fileArray), txtFile);
     }
 }
