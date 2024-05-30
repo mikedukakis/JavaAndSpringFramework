@@ -14,14 +14,14 @@ public class FileHandler {
         String line;
         String tab = "    ";
 
-        if(fileList == null) {
+        if (fileList == null) {
             fileList = new ArrayList<>();
             layer = 0;
         }
 
-        for(int i = 0; i < fileArray.length; i++) {
+        for (int i = 0; i < fileArray.length; i++) {
             Date date = new Date(fileArray[i].lastModified());
-            if(fileArray[i].isDirectory()){
+            if (fileArray[i].isDirectory()) {
                 line = tab.repeat(layer) + "[D] " + fileArray[i].getName() + " - " + date;
                 fileList.add(line);
                 layer++;
@@ -39,7 +39,7 @@ public class FileHandler {
     public static void writeToFile(ArrayList<String> arrayList, File file) {
         try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            for(String element : arrayList){
+            for (String element : arrayList) {
                 bufferedWriter.write(element + "\n");
             }
         } catch (IOException e) {
@@ -49,8 +49,8 @@ public class FileHandler {
     }
 
     public static void readTxtFile(File file) {
-        try(Scanner fileInput = new Scanner(file)) {
-            while(fileInput.hasNextLine()){
+        try (Scanner fileInput = new Scanner(file)) {
+            while (fileInput.hasNextLine()) {
                 System.out.println(fileInput.nextLine());
             }
         } catch (FileNotFoundException e) {

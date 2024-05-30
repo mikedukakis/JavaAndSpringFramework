@@ -16,7 +16,7 @@ public class FileHandler {
         String line;
         String tab = "    ";
 
-        if(fileList == null) {
+        if (fileList == null) {
             fileList = new ArrayList<>();
             layer = 0;
         }
@@ -29,7 +29,7 @@ public class FileHandler {
                 layer++;
                 File[] subarray = file.listFiles();
                 retrieveFileNames(subarray);
-                if(layer > 1){
+                if (layer > 1) {
                     layer--;
                 }
             } else {
@@ -43,7 +43,7 @@ public class FileHandler {
     public static void writeToFile(ArrayList<String> arrayList, File file) {
         try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            for(String element : arrayList){
+            for (String element : arrayList) {
                 bufferedWriter.write(element + "\n");
             }
         } catch (IOException e) {

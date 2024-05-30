@@ -13,17 +13,17 @@ public class FileHandler {
     static int layer;
 
         if(fileList == null) {
-        fileList = new ArrayList<>();
-        layer = 0;
-    }
+            fileList = new ArrayList<>();
+            layer = 0;
+        }
 
     public static ArrayList<String> retrieveFileNames(File[] fileArray) {
         String line;
         String tab = "    ";
 
-        for(int i = 0; i < fileArray.length; i++) {
+        for (int i = 0; i < fileArray.length; i++) {
             Date date = new Date(fileArray[i].lastModified());
-            if(fileArray[i].isDirectory()){
+            if (fileArray[i].isDirectory()) {
                 line = tab.repeat(layer) + "[D] " + fileArray[i].getName() + " - " + date;
                 fileList.add(line);
                 layer++;
@@ -40,8 +40,8 @@ public class FileHandler {
 
     public static void writeToFile(ArrayList<String> arrayList, File file) {
         try (FileWriter fileWriter = new FileWriter(file, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            for(String element : arrayList){
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            for (String element : arrayList) {
                 bufferedWriter.write(element + "\n");
             }
         } catch (IOException e) {
