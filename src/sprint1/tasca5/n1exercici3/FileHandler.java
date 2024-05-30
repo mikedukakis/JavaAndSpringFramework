@@ -9,8 +9,13 @@ import java.io.IOException;
 
 public class FileHandler {
 
-    static ArrayList<String> fileList = new ArrayList<>();
-    static int layer = 0;
+    static ArrayList<String> fileList;
+    static int layer;
+
+        if(fileList == null) {
+        fileList = new ArrayList<>();
+        layer = 0;
+    }
 
     public static ArrayList<String> retrieveFileNames(File[] fileArray) {
         String line;

@@ -7,12 +7,17 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    static ArrayList<String> fileList = new ArrayList<>();
-    static int layer = 0;
+    static ArrayList<String> fileList;
+    static int layer;
 
     public static ArrayList<String> retrieveFileNames(File[] fileArray) {
         String line;
         String tab = "    ";
+
+        if(fileList == null) {
+            fileList = new ArrayList<>();
+            layer = 0;
+        }
 
         for(int i = 0; i < fileArray.length; i++) {
             Date date = new Date(fileArray[i].lastModified());
