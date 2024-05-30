@@ -9,24 +9,31 @@ import java.io.IOException;
 
 public class FileHandler {
 
-    static ArrayList<String> fileList = new ArrayList<>();
-    static int layer = 0;
+    private static ArrayList<String> fileList;
+    private static int layer;
 
     public static ArrayList<String> retrieveFileNames(File[] fileArray) {
         String line;
         String tab = "    ";
 
-        for(int i = 0; i < fileArray.length; i++) {
-            Date date = new Date(fileArray[i].lastModified());
-            if(fileArray[i].isDirectory()){
-                line = tab.repeat(layer) + "[D] " + fileArray[i].getName() + " - " + date;
+        if(fileList == null) {
+            fileList = new ArrayList<>();
+            layer = 0;
+        }
+
+        for (File file : fileArray) {
+            Date date = new Date(file.lastModified());
+            if (file.isDirectory()) {
+                line = tab.repeat(layer) + "[D] " + file.getName() + " - " + date;
                 fileList.add(line);
                 layer++;
-                File[] subarray = fileArray[i].listFiles();
+                File[] subarray = file.listFiles();
                 retrieveFileNames(subarray);
-                layer--;
+                if(layer > 1){
+                    layer--;
+                }
             } else {
-                line = tab.repeat(layer) + "[F] " + fileArray[i].getName() + " - " + date;
+                line = tab.repeat(layer) + "[F] " + file.getName() + " - " + date;
                 fileList.add(line);
             }
         }
