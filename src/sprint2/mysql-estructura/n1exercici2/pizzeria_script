@@ -1,0 +1,107 @@
+CREATE DATABASE pizzeria;
+USE pizzeria;
+
+CREATE TABLE provinces (
+    provinces_id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE towns (
+    towns_id INT AUTO_INCREMENT PRIMARY KEY,
+    towns_name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (provinces_id) REFERENCES provinces(provinces_id)
+);
+
+CREATE TABLE customers (
+    customers_id INT AUTO_INCREMENT PRIMARY KEY,
+    customers_fname VARCHAR(100) NOT NULL,
+    customers_lname VARCHAR(100) NOT NULL,
+    customers_address VARCHAR(255) NOT NULL,
+    customers_postcode VARCHAR(10) NOT NULL,
+    towns_id INT,
+    provinces_id INT,
+    customers_tel VARCHAR(15) NOT NULL,
+    FOREIGN KEY (towns_id) REFERENCES towns(towns_id),
+    FOREIGN KEY (provinces_id) REFERENCES provinces(provinces_id)
+);
+
+CREATE TABLE restaurants (
+    restaurants_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurants_address VARCHAR(255) NOT NULL,
+    restaurants_postcode VARCHAR(10) NOT NULL,
+    towns_id INT,
+    provinces_id INT,
+    FOREIGN KEY (towns_id) REFERENCES towns(towns_id),
+    FOREIGN KEY (provinces_id) REFERENCES provinces(provinces_id)
+);
+
+CREATE TABLE pizzas_categories (
+    pizzas_categories_id INT AUTO_INCREMENT PRIMARY KEY,
+    pizzas_categories_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE burgers (
+    burgers_id INT AUTO_INCREMENT PRIMARY KEY,
+    burgers_name VARCHAR(100) NOT NULL,
+    burgers_quantity INT NOT NULL,
+    burgers_description VARCHAR(255) NOT NULL,
+    burgers_image VARCHAR(255),
+    burgers_price DECIMAL(5, 2) NOT NULL
+);
+
+CREATE TABLE pizzas (
+    pizzas_id INT AUTO_INCREMENT PRIMARY KEY,
+    pizzas_name VARCHAR(100) NOT NULL,
+    pizzas_quantity INT NOT NULL,
+    pizzas_description VARCHAR(255) NOT NULL,
+    pizzas_image VARCHAR(255),
+    pizzas_price DECIMAL(5, 2) NOT NULL,
+    pizzas_categories_id INT,
+    FOREIGN KEY (pizzas_categories_id) REFERENCES pizzas_categories(pizzas_categories_id)
+);
+
+CREATE TABLE drinks (
+    drinks_id INT AUTO_INCREMENT PRIMARY KEY,
+    drinks_name VARCHAR(100) NOT NULL,
+    drinks_quantity INT NOT NULL,
+    drinks_description VARCHAR(255) NOT NULL,
+    drinks_image VARCHAR(255),
+    drinks_price DECIMAL(5, 2) NOT NULL
+);
+
+CREATE TABLE orders (
+    orders_id INT AUTO_INCREMENT PRIMARY KEY,
+    orders_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    orders_delivery ENUM('takeaway', 'delivery') NOT NULL,
+    orders_total_price DECIMAL(10, 2) NOT NULL,
+    customers_id INT,
+    restaurants_id INT,
+    pizzas_id INT,
+    burgers_id INT,
+    drinks_id INT,
+    FOREIGN KEY (customers_id) REFERENCES customers(customers_id),
+    FOREIGN KEY (restaurants_id) REFERENCES restaurants(restaurants_id),
+    FOREIGN KEY (pizzas_id) REFERENCES pizzas(pizzas_id),
+    FOREIGN KEY (burgers_id) REFERENCES burgers(burgers_id),
+    FOREIGN KEY (drinks_id) REFERENCES drinks(drinks_id)
+);
+
+CREATE TABLE staff (
+    staff_id INT AUTO_INCREMENT PRIMARY KEY,
+    staff_fname VARCHAR(100) NOT NULL,
+    staff_lname VARCHAR(100) NOT NULL,
+    staff_nif VARCHAR(9) NOT NULL,
+    staff_tel VARCHAR(15) NOT NULL,
+    staff_position ENUM('cook', 'delivery') NOT NULL,
+    restaurant_id INT,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)
+);
+
+CREATE TABLE deliveries (
+    deliveries_id INT AUTO_INCREMENT PRIMARY KEY,
+    orders_id INT,
+    staff_id INT,
+    deliveries_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (orders_id) REFERENCES orders(orders_id),
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+);
