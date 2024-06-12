@@ -2,7 +2,7 @@ USE pizzeria;
 
 INSERT INTO `pizzeria`.`towns` (`towns_name`) VALUES
 ('Barcelona'),
-('L'Hospitalet de Llobregat'),
+("L'Hospitalet de Llobregat"),
 ('Reus'),
 ('Salt'),
 ('Lleida');
@@ -14,11 +14,11 @@ INSERT INTO `pizzeria`.`provinces` (`provinces_name`) VALUES
 ('Lleida');
 
 INSERT INTO `pizzeria`.`customers` (`customers_fname`, `customers_lname`, `customers_address`, `customers_postcode`, `towns_id`, `provinces_id`, `customers_tel`) VALUES
-('John', 'Doe', '123 Avinguda Diagonal', '12345', 1, 1, '1234567890'),
-('Jane', 'Smith', '456 Avinguda Horitzontal', '54321', 2, 1, '0987654321'),
-('Michael', 'Brown', '789 Avinguda Vertical', '67890', 3, 2, '1122334455'),
-('Emily', 'Davis', '101 Avinguda Transversal', '98765', 4, 3, '5566778899'),
-('Sarah', 'Johnson', '202 Avinguda Paral·lela', '13579', 5, 4, '6677889900');
+('John', 'Doe', '123 Avinguda Diagonal', '08080', 1, 1, '1234567890'),
+('Jane', 'Doe', '456 Avinguda Horitzontal', '08025', 2, 1, '0987654321'),
+('Johnny', 'Donny', '789 Avinguda Vertical', '08120', 3, 2, '1122334455'),
+('Janey', 'Daney', '101 Avinguda Transversal', '08850', 4, 3, '5566778899'),
+('Jamal', 'Danal', '202 Avinguda Paral·lela', '08008', 5, 4, '6677889900');
 
 INSERT INTO `pizzeria`.`restaurants` (`restaurants_address`, `restaurants_postcode`, `towns_id`, `provinces_id`) VALUES
 ('123 Carrer Gran', '08080', 1, 1),
@@ -61,18 +61,18 @@ INSERT INTO `pizzeria`.`pizzas_categories` (`pizzas_categories_name`) VALUES
 ('Classic');
 
 INSERT INTO `pizzeria`.`orders_has_products` (`customers_id`, `restaurants_id`, `products_id`, `orders_has_products_quantity`) VALUES
-(1, 1, 3, 2,),
+(1, 1, 3, 2),
 (2, 1, 2, 1),
 (3, 3, 8, 3),
 (4, 2, 5, 4),
 (5, 5, 12, 5);
 
-INSERT INTO `pizzeria`.`orders` (`orders_date_time`, `orders_delivery`, `orders_total_price`, `customers_id`, `restaurants_id`, `pizzas_id`, `burgers_id`, `drinks_id`) VALUES
-(NOW(), 'delivery', 25.97, 1, 1, 1, 1, 1),
-(NOW(), 'takeaway', 28.87, 2, 2, 2, 2, 2),
-(NOW(), 'delivery', 30.87, 3, 3, 3, 3, 3),
-(NOW(), 'takeaway', 35.87, 4, 4, 4, 4, 4),
-(NOW(), 'delivery', 22.97, 5, 5, 5, 5, 5);
+INSERT INTO `pizzeria`.`orders` (`orders_date_time`, `orders_delivery`, `orders_total_price`, `customers_id`, `restaurants_id`, `products_id`) VALUES
+(NOW(), 'delivery', 25.97, 1, 1, 2),
+(NOW(), 'takeaway', 28.87, 2, 2, 5),
+(NOW(), 'delivery', 30.87, 3, 3, 8),
+(NOW(), 'takeaway', 35.87, 4, 4, 10),
+(NOW(), 'delivery', 22.97, 5, 5, 12);
 
 INSERT INTO `pizzeria`.`deliveries` (`orders_id`, `staff_id`, `deliveries_date_time`) VALUES
 (1, 2, NOW()),
