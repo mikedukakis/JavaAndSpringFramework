@@ -10,6 +10,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema pizzeria
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema pizzeria
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `pizzeria` DEFAULT CHARACTER SET utf8mb4 ;
 USE `pizzeria` ;
 
