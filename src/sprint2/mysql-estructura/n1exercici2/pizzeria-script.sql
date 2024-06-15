@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema pizzeria
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema pizzeria
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `pizzeria` DEFAULT CHARACTER SET utf8mb4 ;
 USE `pizzeria` ;
 
@@ -148,6 +144,24 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`staff` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
+-- -----------------------------------------------------
+-- Table `pizzeria`.`deliveries`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pizzeria`.`deliveries` (
+  `deliveries_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `orders_id` INT(11) NOT NULL,
+  `deliveries_date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `staff_id` INT(11) NOT NULL,
+  PRIMARY KEY (`deliveries_id`),
+  INDEX `fk_deliveries_staff1_idx` (`staff_id` ASC),
+  CONSTRAINT `fk_deliveries_staff1`
+    FOREIGN KEY (`staff_id`)
+    REFERENCES `pizzeria`.`staff` (`staff_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
 
 -- -----------------------------------------------------
 -- Table `pizzeria`.`orders`
@@ -177,25 +191,6 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`orders` (
   CONSTRAINT `fk_orders_deliveries1`
     FOREIGN KEY (`deliveries_id`)
     REFERENCES `pizzeria`.`deliveries` (`deliveries_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
-
--- -----------------------------------------------------
--- Table `pizzeria`.`deliveries`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pizzeria`.`deliveries` (
-  `deliveries_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `orders_id` INT(11) NULL DEFAULT NULL,
-  `deliveries_date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-  `staff_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`deliveries_id`),
-  INDEX `fk_deliveries_staff1_idx` (`staff_staff_id` ASC),
-  CONSTRAINT `fk_deliveries_staff1`
-    FOREIGN KEY (`staff_staff_id`)
-    REFERENCES `pizzeria`.`staff` (`staff_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
