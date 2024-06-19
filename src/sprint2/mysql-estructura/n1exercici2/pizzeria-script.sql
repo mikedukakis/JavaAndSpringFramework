@@ -67,7 +67,14 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE IF NOT EXISTS `pizzeria`.`towns` (
   `towns_id` INT(11) NOT NULL AUTO_INCREMENT,
   `towns_name` VARCHAR(100) NOT NULL,
+  `provinces_provinces_id` INT(2) NOT NULL,
   PRIMARY KEY (`towns_id`))
+  INDEX `fk_towns_provinces1_idx` (`provinces_provinces_id` ASC),
+  CONSTRAINT `fk_towns_provinces1`
+    FOREIGN KEY (`provinces_provinces_id`)
+    REFERENCES `pizzeria`.`provinces` (`provinces_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION) 
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
