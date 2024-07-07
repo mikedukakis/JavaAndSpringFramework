@@ -38,8 +38,4 @@ public class Undo {
             }
         }
     }
-
-    public boolean hasHistory() {
-        return !commandHistory.isEmpty();
-    }
 }

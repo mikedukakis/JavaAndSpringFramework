@@ -1,15 +1,11 @@
 package sprint3.n1exericici1;
 
-import java.util.Scanner;
-
 public class App {
-    private final Scanner keyboardInput;
     private String text;
     private String oldText;
     private final Undo undoManager;
 
     public App() {
-        this.keyboardInput = new Scanner(System.in);
         this.text = "";
         this.undoManager = Undo.getInstance();
     }

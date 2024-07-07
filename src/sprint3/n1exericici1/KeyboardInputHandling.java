@@ -4,18 +4,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class KeyboardInputHandling {
-    private static Scanner keyboardInput = new Scanner(System.in);
+    private static final Scanner KEYBOARD_INPUT = new Scanner(System.in);
 
     public static int readInt(String question) {
         int intNumber = 0;
         boolean error = true;
         do {
             try {
-                intNumber = keyboardInput.nextInt();
-                keyboardInput.nextLine();
+                intNumber = KEYBOARD_INPUT.nextInt();
+                KEYBOARD_INPUT.nextLine();
                 error = false;
             } catch(InputMismatchException e) {
-                keyboardInput.nextLine();
+                KEYBOARD_INPUT.nextLine();
                 System.out.println("Format error, integer expected");
                 System.out.println(question);
             }
@@ -29,7 +29,7 @@ public class KeyboardInputHandling {
         boolean error = true;
         do {
             try {
-                input = keyboardInput.nextLine();
+                input = KEYBOARD_INPUT.nextLine();
                 if(input.length() == 1) {
                     character = input.charAt(0);
                     error = false;
@@ -49,7 +49,7 @@ public class KeyboardInputHandling {
         boolean error = true;
         do {
             try{
-                str = keyboardInput.nextLine();
+                str = KEYBOARD_INPUT.nextLine();
                 if(str.matches("[0-9]+") || str.isEmpty()){
                     throw new Exception();
                 } else {
