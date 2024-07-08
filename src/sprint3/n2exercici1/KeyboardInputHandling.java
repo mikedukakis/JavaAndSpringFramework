@@ -14,7 +14,7 @@ public class KeyboardInputHandling {
                 intNumber = KEYBOARD_INPUT.nextInt();
                 KEYBOARD_INPUT.nextLine();
                 error = false;
-            } catch(InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 KEYBOARD_INPUT.nextLine();
                 System.out.println("Format error, integer expected");
                 System.out.println(question);
@@ -30,13 +30,13 @@ public class KeyboardInputHandling {
         do {
             try {
                 input = KEYBOARD_INPUT.nextLine();
-                if(input.length() == 1) {
+                if (input.length() == 1) {
                     character = input.charAt(0);
                     error = false;
                 } else {
                     throw new Exception();
                 }
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Format error, character expected");
                 System.out.println(question);
             }
@@ -48,18 +48,18 @@ public class KeyboardInputHandling {
         String str = "";
         boolean error = true;
         do {
-            try{
+            try {
                 str = KEYBOARD_INPUT.nextLine();
-                if(str.isEmpty()){
+                if (str.isEmpty()) {
                     throw new Exception();
                 } else {
                     error = false;
                 }
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Format error, string expected");
                 System.out.println(question);
             }
-        } while(error);
+        } while (error);
         return str;
     }
 

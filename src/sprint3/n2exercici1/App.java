@@ -37,16 +37,16 @@ public class App {
     public boolean optionManger() {
         boolean exit = false;
         int country;
-        do{
+        do {
             System.out.println(menu());
-            switch (userOption()){
+            switch (userOption()) {
                 case 0:
                     System.out.println("Thanks for using the Contact Manager");
                     exit = true;
                     break;
                 case 1:
                     country = selectCountry();
-                    if(country == 1) {
+                    if (country == 1) {
                         factory = new ContactES();
                     } else if (country == 2) {
                         factory = new ContactUK();
@@ -61,7 +61,7 @@ public class App {
                 default:
                     System.out.println("Choose an option from 0 to 2");
             }
-        } while(!exit);
+        } while (!exit);
         return exit;
     }
 
@@ -70,7 +70,7 @@ public class App {
         boolean exit = false;
         do {
             System.out.println(countryMenu());
-            switch(userOption()) {
+            switch (userOption()) {
                 case 1:
                     countryCode = 1;
                     exit = true;
@@ -122,10 +122,10 @@ public class App {
     }
 
     public void viewContacts() {
-        if(contacts.isEmpty()){
+        if (contacts.isEmpty()) {
             System.out.println("No contacts could be found");
         } else {
-            for(Contacts element : contacts) {
+            for (Contacts element : contacts) {
                 System.out.println(element.toString());
             }
         }

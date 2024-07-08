@@ -1,6 +1,6 @@
 package sprint3.n2exercici1.address;
 
-public class AddressUS  implements Address {
+public class AddressUS implements Address {
     private String street;
     private String city;
     private String provinceCountyState;
@@ -17,6 +17,6 @@ public class AddressUS  implements Address {
     @Override
     public String getFullAddress() {
         return this.street + ", " + this.city + ". " + this.provinceCountyState +
-                ", " + this.postcode + ". " +  COUNTRY;
+                ", " + this.postcode + ". " + COUNTRY;
     }
 }

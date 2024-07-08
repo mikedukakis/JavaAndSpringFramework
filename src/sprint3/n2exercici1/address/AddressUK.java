@@ -1,6 +1,6 @@
 package sprint3.n2exercici1.address;
 
-public class AddressUK  implements Address {
+public class AddressUK implements Address {
     private String street;
     private String town;
     private String provinceCountyState;
