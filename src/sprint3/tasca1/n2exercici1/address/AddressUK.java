@@ -1,4 +1,4 @@
-package sprint3.n2exercici1.address;
+package sprint3.tasca1.n2exercici1.address;
 
 public class AddressUK implements Address {
     private String street;

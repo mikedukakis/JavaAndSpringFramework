@@ -1,4 +1,4 @@
-package sprint3.n1exericici1;
+package sprint3.tasca1.n1exericici1;
 
 import java.util.Stack;
 

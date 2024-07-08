@@ -1,4 +1,4 @@
-package sprint3.n2exercici1.telephone;
+package sprint3.tasca1.n2exercici1.telephone;
 
 public class TelephoneUS implements Telephone {
     private static final String INTERNATIONAL_CODE = "+1";

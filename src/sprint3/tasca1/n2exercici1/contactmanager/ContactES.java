@@ -1,9 +1,9 @@
-package sprint3.n2exercici1.contactmanager;
+package sprint3.tasca1.n2exercici1.contactmanager;
 
-import sprint3.n2exercici1.address.Address;
-import sprint3.n2exercici1.address.AddressES;
-import sprint3.n2exercici1.telephone.Telephone;
-import sprint3.n2exercici1.telephone.TelephoneES;
+import sprint3.tasca1.n2exercici1.address.Address;
+import sprint3.tasca1.n2exercici1.address.AddressES;
+import sprint3.tasca1.n2exercici1.telephone.Telephone;
+import sprint3.tasca1.n2exercici1.telephone.TelephoneES;
 
 public class ContactES implements ContactFactory {
     @Override

@@ -1,8 +1,9 @@
-package sprint3.n2exercici1;
+package sprint3.tasca1.n2exercici1;
 
 import sprint3.n2exercici1.contactmanager.*;
-import sprint3.n2exercici1.address.Address;
-import sprint3.n2exercici1.telephone.Telephone;
+import sprint3.tasca1.n2exercici1.address.Address;
+import sprint3.tasca1.n2exercici1.contactmanager.*;
+import sprint3.tasca1.n2exercici1.telephone.Telephone;
 
 import java.util.ArrayList;
 
