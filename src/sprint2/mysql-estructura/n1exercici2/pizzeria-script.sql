@@ -92,13 +92,7 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`customers` (
   `provinces_id` INT(2) NOT NULL,
   `customers_tel` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`customers_id`),
-  INDEX `fk_customers_provinces1_idx` (`provinces_id` ASC),
   INDEX `fk_customers_towns1_idx` (`towns_id` ASC),
-  CONSTRAINT `fk_customers_provinces1`
-    FOREIGN KEY (`provinces_id`)
-    REFERENCES `pizzeria`.`provinces` (`provinces_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_customers_towns1`
     FOREIGN KEY (`towns_id`)
     REFERENCES `pizzeria`.`towns` (`towns_id`)
@@ -115,16 +109,9 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`restaurants` (
   `restaurants_id` INT(11) NOT NULL AUTO_INCREMENT,
   `restaurants_address` VARCHAR(255) NOT NULL,
   `restaurants_postcode` VARCHAR(10) NOT NULL,
-  `provinces_id` INT(2) NOT NULL,
   `towns_id` INT(11) NOT NULL,
   PRIMARY KEY (`restaurants_id`),
-  INDEX `fk_restaurants_provinces1_idx` (`provinces_id` ASC),
   INDEX `fk_restaurants_towns1_idx` (`towns_id` ASC),
-  CONSTRAINT `fk_restaurants_provinces1`
-    FOREIGN KEY (`provinces_id`)
-    REFERENCES `pizzeria`.`provinces` (`provinces_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_restaurants_towns1`
     FOREIGN KEY (`towns_id`)
     REFERENCES `pizzeria`.`towns` (`towns_id`)
