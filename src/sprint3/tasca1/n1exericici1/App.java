@@ -55,43 +55,21 @@ public class App {
                 break;
             case 1:
                 inputText();
-                System.out.println("Text saved: " + this.text);
                 break;
             case 2:
-                this.oldText = this.text;
-                this.text = TextEditor.toUpperCase(this.text);
-                System.out.println(this.text);
-                undoManager.addCommand("Turn to upper case.", this.oldText, this.text);
+                convertToUpperCase();
                 break;
             case 3:
-                this.oldText = this.text;
-                this.text = TextEditor.toLowerCase(this.text);
-                System.out.println(this.text);
-                undoManager.addCommand("Turn to lower case.", this.oldText, this.text);
+                convertToLowerCase();
                 break;
             case 4:
-                this.oldText = this.text;
-                System.out.println("Enter the letter you want to remove from all the text");
-                String oldLetter = String.valueOf(KeyboardInputHandling.readChar("Please enter a character"));
-                this.text = TextEditor.removeLetter(getText(), oldLetter);
-                System.out.println(this.text);
-                undoManager.addCommand("Remove letter " + oldLetter, this.oldText, this.text);
+                removeALetter();
                 break;
             case 5:
-                this.oldText = this.text;
-                System.out.println("Enter the character to replace:");
-                char oldChar = KeyboardInputHandling.readChar("Please enter the character to replace:");
-                System.out.println("Enter the new character:");
-                char newChar = KeyboardInputHandling.readChar("Please enter the character to replace:");
-                this.text = TextEditor.replaceLetter(getText(), oldChar, newChar);
-                System.out.println(this.text);
-                undoManager.addCommand("Replace " + oldChar + " with " + newChar, this.oldText, this.text);
+                replaceALetter();
                 break;
             case 6:
-                this.oldText = this.text;
-                this.text = TextEditor.removeSpaces(getText());
-                System.out.println(this.text);
-                undoManager.addCommand("Removed spaces.", this.oldText, this.text);
+                removeAllSpaces();
                 break;
             case 7:
                 undoLastCommand();
@@ -111,6 +89,48 @@ public class App {
         System.out.println("Please enter a text:");
         this.text = KeyboardInputHandling.readString("Please enter a text:");
         undoManager.addCommand("Input text.", this.oldText, this.text);
+        System.out.println("Text saved: " + this.text);
+    }
+
+    public void convertToUpperCase() {
+        this.oldText = this.text;
+        this.text = TextEditor.toUpperCase(this.text);
+        System.out.println(this.text);
+        undoManager.addCommand("Turn to upper case.", this.oldText, this.text);
+    }
+
+    public void convertToLowerCase() {
+        this.oldText = this.text;
+        this.text = TextEditor.toLowerCase(this.text);
+        System.out.println(this.text);
+        undoManager.addCommand("Turn to lower case.", this.oldText, this.text);
+    }
+
+    public void removeALetter() {
+        this.oldText = this.text;
+        System.out.println("Enter the letter you want to remove from all the text");
+        String oldLetter = String.valueOf(KeyboardInputHandling.readChar("Please enter a character"));
+        this.text = TextEditor.removeLetter(getText(), oldLetter);
+        System.out.println(this.text);
+        undoManager.addCommand("Remove letter " + oldLetter, this.oldText, this.text);
+    }
+
+    public void replaceALetter() {
+        this.oldText = this.text;
+        System.out.println("Enter the character to replace:");
+        char oldChar = KeyboardInputHandling.readChar("Please enter the character to replace:");
+        System.out.println("Enter the new character:");
+        char newChar = KeyboardInputHandling.readChar("Please enter the character to replace:");
+        this.text = TextEditor.replaceLetter(getText(), oldChar, newChar);
+        System.out.println(this.text);
+        undoManager.addCommand("Replace " + oldChar + " with " + newChar, this.oldText, this.text);
+    }
+
+    public void removeAllSpaces() {
+        this.oldText = this.text;
+        this.text = TextEditor.removeSpaces(getText());
+        System.out.println(this.text);
+        undoManager.addCommand("Removed spaces.", this.oldText, this.text);
     }
 
     private void undoLastCommand() {
